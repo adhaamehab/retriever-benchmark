@@ -1,0 +1,12 @@
+python -m cProfile -o csv_engine_small csv_engine_small.py
+python -m cProfile -o csv_engine_large csv_engine_large.py
+python -m cProfile -o json_engine_small json_engine_small.py
+python -m cProfile -o json_engine_large json_engine_large.py
+python -m cProfile -o xml_engine_small xml_engine_small.py
+python -m cProfile -o xml_engine_large xml_engine_large.py
+python -m cProfile -o sqlite_engine_small sqlite_engine_small.py
+python -m cProfile -o sqlite_engine_large sqlite_engine_large.py
+python -m cProfile -o mysql_engine_small mysql_engine_small.py
+python -m cProfile -o mysql_engine_large mysql_engine_large.py
+python -m cProfile -o postgres_engine_small postgres_engine_small.py
+python -m cProfile -o postgres_engine_large postgres_engine_large.py
