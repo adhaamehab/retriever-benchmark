@@ -28,6 +28,29 @@ Time for installing the dataset
 
 
 
+----------------------------------
+Bottelnecks methods
+
+|# | method   | file  |
+| ------------- |:-------------:| -----:|
+|1 | format_insert_value | csvengine.py |
+|2 | format_insert_value | engine.py |
+|3 | correct_invalid_value | cleanup.py |
+|4 | load_data | engine.py |
+|5 | format_insert_value   | jsonengine.py |
+|7 | add_to_table  | engine.py|
+|8 | get_insert_columns  | table.py|
+|9 | auto_get_datatypes  | engine.py|
+|10 | format_insert_value  | xmlengine.py|
+|11 | format_single_row  | xmlengine.py|
+|12 | < listcomp:104 > | engine.py|
+|13 | values_from_line | table.py|
+|14 | < listcomp:734 >  | engine.py|
+|15 | executemany | engine.py|
+|16 | format_insert_value | postgres.py|
+
+
+
 #### CSV Engine
 
 
