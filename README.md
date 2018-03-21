@@ -1,6 +1,6 @@
 # Data retriever benchmark
 
-a simple test aims to finds bottlenecks of data retriever
+A simple test aims to finds bottlenecks of data retriever
 
 
 ### Notes
@@ -11,6 +11,23 @@ a simple test aims to finds bottlenecks of data retriever
 
 Note
 > both stats are sorted by [time per call in total time](https://jiffyclub.github.io/snakeviz/#interpreting-results)
+
+
+## Conclusion/Results
+
+Time for installing the dataset
+| Engine        | phytoplankton-size dataset    | nyc-tree-count dataset  |
+| ------------- |:-------------:| -----:|
+| csv      | 494 s| 563 s|
+| json      | 528 s  |  615 s |
+| xml | 591 s |    677 s |
+| sqlite | 432 s  | 586 s |
+| mysql |  586 s |  880 s |
+| postgres | 559 s |  724 s|
+
+
+
+
 
 #### CSV Engine
 
@@ -152,7 +169,6 @@ __phytoplankton-size__ dataset
 
 ![Figure5.3](screenshots/mysql_small_3.png)
 
-![Figure5.4](screenshots/mysql_small_4.png)
 
 __nyc-tree-count__  dataset 
 
