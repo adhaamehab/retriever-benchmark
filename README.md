@@ -29,7 +29,7 @@ __Time for installing the dataset__
 
 
 ----------------------------------
-__Bottelnecks methods__
+__Bottelnecks methods in retriver code__
 
 |# | method   | file  |
 | ------------- |:-------------:| -----:|
@@ -48,6 +48,7 @@ __Bottelnecks methods__
 |14 | < listcomp:734 >  | engine.py|
 |15 | executemany | engine.py|
 |16 | format_insert_value | postgres.py|
+|16 | floatable | cleanup.py|
 
 
 
@@ -62,6 +63,23 @@ __Engines sorted by performance(best-to-worst)__
 | 4 | XML     |
 | 5 | POSTGRES|
 | 6 | MYSQL   |
+
+----------------------------------
+__Bottelnecks methods in used tools/modules__
+> Can make a big difference but it's less priority 
+
+|# | method   | module  |     |
+| ------------- |:-------------:| -----:|-----:|
+|1 | executemany  | psycopg ||
+|2 | sub | re ||
+|3 | len | builtin | HUGE number of calls |
+|4 | split | str |
+|5 | lower | str |
+|7 | format  | str|
+|8 | encode  | json|
+|9 | decode  | json|
+|10 | dumps  | json.py|
+
 
 #### CSV Engine
 
