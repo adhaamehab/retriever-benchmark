@@ -1,21 +1,19 @@
 # Data retriever benchmark
 
-a simple test aims to finds slow parts in all data retriever engines
-
-
+a simple test aims to finds bottlenecks of data retriever
 
 
 ### Notes
 - This test use `nyc-tree-count`__(226M)__ for large test and `phytoplankton-size` __(83MB)__ for small
 - In further progress this test should use vertnet dataset
- 
 
-### Specifications
+## Experiment
 
+Note
+> both stats are sorted by [time per call in total time](https://jiffyclub.github.io/snakeviz/#interpreting-results)
 
 #### CSV Engine
 
-##### The pipeline 
 
 __phytoplankton-size__ dataset 
 
@@ -40,20 +38,7 @@ __nyc-tree-count__  dataset
 ![Figure2.1](screenshots/csv_small_stats.png)
 
 ![Figure2.1](screenshots/csv_large_stats.png)
-> both stats are sorted by [time per call in total time](https://jiffyclub.github.io/snakeviz/#interpreting-results)
 
-
-from the performance charts and according to the stats of both the datasets
-
-`auto_get_datatypes` at `engine.py` line : 217
-
-`add_to_table` at `engine.py` line : 77
-
-are the heavy parts in the csv engine pipeline
-
-also despite `format_insert_value` at `csvengine.py` line :56 and `format_insert_value` at `engine.py` line :545
-
-have short percall time, but they have 31.26s and 58.99 total time for 10947193  call which implies that it would make a huge different optimize them.
 
 -----------------------------------------------------
 
@@ -63,39 +48,177 @@ __phytoplankton-size__ dataset
 
 ![Figure1.1](screenshots/json_small_1.png)
 
-![Figure1.1](screenshots/json_small_2.png)
+![Figure1.2](screenshots/json_small_2.png)
 
-![Figure3.1](screenshots/json_small_3.png)
+![Figure3.3](screenshots/json_small_3.png)
 
-![Figure3.2](screenshots/json_small_4.png)
+![Figure3.4](screenshots/json_small_4.png)
 
-![Figure3.3](screenshots/json_large_1.png)
+__nyc-tree-count__  dataset 
 
-![Figure3.4](screenshots/json_large_2.png)
+![Figure3.5](screenshots/json_large_1.png)
 
-![Figure3.5](screenshots/json_large_3.png)
+![Figure3.6](screenshots/json_large_2.png)
 
-![Figure3.6](screenshots/json_large_4.png)
+![Figure3.7](screenshots/json_large_3.png)
 
-![Figure3.7](screenshots/json_small_stats.png)
+![Figure3.8](screenshots/json_large_4.png)
 
-![Figure3.8](screenshots/json_small_stats_2.png)
+![Figure3.9](screenshots/json_small_stats.png)
 
-![Figure3.8](screenshots/json_large_stats_1.png)
+![Figure3.9.1](screenshots/json_small_stats_2.png)
 
-from the above charts we can point to 
+![Figure3.9.2](screenshots/json_large_stats_1.png)
 
-`format_insert_value` at `engine.py` line : 545 
-
-`format_insert_value` at `jsonengine.py` line :73
-
-`add_to_table` at `engine.py` line : 77
-
-`get_insert_columns` at `table.py` line : 222
-
-which are the main time consumers in the json engine
-
-also json encoder and decoder takes about 18.97 and 7.532
 
 --------------------------------------------------------
 
+
+#### XML Engine
+
+__phytoplankton-size__ dataset 
+
+![Figure4.1](screenshots/xml_small_1.png)
+
+![Figure4.2](screenshots/xml_small_2.png)
+
+![Figure4.3](screenshots/xml_small3.png)
+
+![Figure4.4](screenshots/xml_small_4.png)
+
+![Figure4.5](screenshots/xml_small_5.png)
+
+__nyc-tree-count__  dataset 
+
+![Figure4.6](screenshots/xml_large_1.png)
+
+![Figure4.7](screenshots/xml_large_2.png)
+
+![Figure4.8](screenshots/xml_large_3.png)
+
+![Figure4.9.1](screenshots/xml_stats_small.png)
+
+![Figure4.9.2](screenshots/xml_stats_small2.png)
+
+![Figure4.9.3](screenshots/xml_large_stats1.png)
+
+![Figure4.9.4](screenshots/xml_large_stats2.png)
+
+
+
+------------------------------------
+
+
+### SQLITE engine
+
+__phytoplankton-size__ dataset 
+
+![Figure5.1](screenshots/sqlite_small_1.png)
+
+![Figure5.2](screenshots/sqlite_small_2.png)
+
+![Figure5.3](screenshots/sqlite_small_3.png)
+
+![Figure5.4](screenshots/sqlite_small_4.png)
+
+__nyc-tree-count__  dataset 
+
+![Figure5.6.1](screenshots/sqlite_large_1.png)
+
+![Figure5.6.2](screenshots/sqlite_large_2.png)
+
+![Figure5.6.3](screenshots/sqlite_large_3.png)
+
+![Figure5.6.4](screenshots/sqlite_large_4.png)
+
+![Figure5.7.1](screenshots/sqlite_stats_1.png)
+
+![Figure5.7.1](screenshots/sqlite_stats_2.png)
+
+![Figure5.7.1](screenshots/sqlite_stats_3.png)
+
+![Figure5.7.1](screenshots/sqlite_stats_4.png)
+
+
+--------------------------------------
+
+### MYSQL engine
+
+__phytoplankton-size__ dataset 
+
+![Figure5.1](screenshots/mysql_small_1.png)
+
+![Figure5.2](screenshots/mysql_small_2.png)
+
+![Figure5.3](screenshots/mysql_small_3.png)
+
+![Figure5.4](screenshots/mysql_small_4.png)
+
+__nyc-tree-count__  dataset 
+
+![Figure5.6.1](screenshots/mysql_large_1.png)
+
+![Figure5.6.2](screenshots/mysql_large_2.png)
+
+![Figure5.6.3](screenshots/mysql_large_3.png)
+
+![Figure5.6.4](screenshots/mysql_large_4.png)
+
+![Figure5.7.1](screenshots/mysql_stats_1.png)
+
+![Figure5.7.2](screenshots/mysql_stats_2.png)
+
+![Figure5.7.3](screenshots/mysql_stats_3.png)
+
+![Figure5.7.4](screenshots/mysql_stats_4.png)
+
+
+--------------------------------------
+
+
+
+### POSTGRESQL engine
+
+__phytoplankton-size__ dataset 
+
+![Figure5.1](screenshots/postgres_small_1.png)
+
+![Figure5.2](screenshots/postgres_small_2.png)
+
+![Figure5.3](screenshots/postgres_small_3.png)
+
+![Figure5.4](screenshots/postgres_small_4.png)
+
+![Figure5.4](screenshots/postgres_small_5.png)
+
+
+__nyc-tree-count__  dataset 
+
+![Figure 7.6.1](screenshots/postgres_large_1.png)
+
+![Figure 7.6.2](screenshots/postgres_large_2.png)
+
+![Figure 7.6.3](screenshots/postgres_large_3.png)
+
+![Figure 7.7.1](screenshots/postgres_stats_1.png)
+
+![Figure5.7.1](screenshots/postgres_stats_2.png)
+
+![Figure5.7.1](screenshots/postgres_stats_3.png)
+
+![Figure5.7.1](screenshots/postgres_stats_4.png)
+
+-------------------------------------
+
+
+TODO:
+
+- Add instalation guide to readme
+
+- Improve design and workflow
+
+- Add dynamic datasetnames 
+
+- Live preview depolyment
+
+- Add conclusion
