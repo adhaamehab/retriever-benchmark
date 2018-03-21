@@ -16,6 +16,7 @@ Note
 ## Conclusion/Results
 
 Time for installing the dataset
+
 | Engine        | phytoplankton-size dataset    | nyc-tree-count dataset  |
 | ------------- |:-------------:| -----:|
 | csv      | 494 s| 563 s|
@@ -24,8 +25,6 @@ Time for installing the dataset
 | sqlite | 432 s  | 586 s |
 | mysql |  586 s |  880 s |
 | postgres | 559 s |  724 s|
-
-
 
 
 
