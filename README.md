@@ -15,7 +15,7 @@ Note
 
 ## Conclusion/Results
 
-Time for installing the dataset
+__Time for installing the dataset__
 
 | Engine        | phytoplankton-size dataset    | nyc-tree-count dataset  |
 | ------------- |:-------------:| -----:|
@@ -29,7 +29,7 @@ Time for installing the dataset
 
 
 ----------------------------------
-Bottelnecks methods
+__Bottelnecks methods__
 
 |# | method   | file  |
 | ------------- |:-------------:| -----:|
@@ -50,6 +50,18 @@ Bottelnecks methods
 |16 | format_insert_value | postgres.py|
 
 
+
+----------------------------------
+__Engines sorted by performance(best-to-worst)__
+
+|#  | Engine  |
+|---|:-------:|
+| 1 | CSV     |
+| 2 | SQLITE  |
+| 3 | JSON    |
+| 4 | XML     |
+| 5 | POSTGRES|
+| 6 | MYSQL   |
 
 #### CSV Engine
 
